@@ -29,6 +29,7 @@ function github_plugin_updater_test_init() {
             'sslverify' => true,
             'requires' => '4.0',
             'tested' => '4.6.1',
+	    'readme' => 'README.md',
             'access_token' => '',
         );
 
