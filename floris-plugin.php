@@ -3,7 +3,7 @@
 Plugin Name: Floris
 Description: A powerful theme for shops.
 Author: Azelab
-Version: 1.3
+Version: 1.4
 Text Domain: Floris
 Plugin URI: http://azelab.com/
 */
@@ -12,7 +12,7 @@ Plugin URI: http://azelab.com/
 
 // gets the current theme
 $theme = wp_get_theme();
-if ('Floris' == $theme->name) {
+if ('Floris' == $theme->name || 'Floris (Child Theme)' == $theme->name) {
 
 	add_action( 'init', 'github_plugin_updater_test_init' );
 	function github_plugin_updater_test_init() {
