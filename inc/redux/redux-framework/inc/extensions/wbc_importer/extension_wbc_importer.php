@@ -372,19 +372,23 @@ if ( !class_exists( 'ReduxFramework_extension_wbc_importer' ) ) {
             $wbc_importer_label = trim( esc_html( apply_filters( 'wbc_importer_label', __( 'Demo Importer', 'framework' ) ) ) );
 
             $wbc_importer_label = ( !empty( $wbc_importer_label ) ) ? $wbc_importer_label : __( 'Demo Importer', 'framework' );
+            
+            $whitelist = array( '127.0.0.1', '::1' );
+            if (get_option( 'enable_full_version' ) || trial_period() <= 7 || in_array( $_SERVER['REMOTE_ADDR'], $whitelist)) {
 
-            $this->parent->sections[] = array(
-                'id'     => 'wbc_importer_section',
-                'title'  => $wbc_importer_label,
-                'desc'   => '<p class="description">'. apply_filters( 'wbc_importer_description', esc_html__( 'Works best to import on a new install of WordPress', 'framework' ) ).'</p>',
-                'icon'   => 'el-icon-website',
-                'fields' => array(
-                    array(
-                        'id'   => 'wbc_demo_importer',
-                        'type' => 'wbc_importer'
+                $this->parent->sections[] = array(
+                    'id'     => 'wbc_importer_section',
+                    'title'  => $wbc_importer_label,
+                    'desc'   => '<p class="description">'. apply_filters( 'wbc_importer_description', esc_html__( 'Works best to import on a new install of WordPress', 'framework' ) ).'</p>',
+                    'icon'   => 'el-icon-website',
+                    'fields' => array(
+                        array(
+                            'id'   => 'wbc_demo_importer',
+                            'type' => 'wbc_importer'
+                        )
                     )
-                )
-            );
+                );
+            }
         }
 
     } // class

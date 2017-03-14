@@ -115,22 +115,25 @@
             }
 
             public function add_section() {
-                $this->parent->sections[] = array(
-                    'id'         => 'import/export',
-                    'title'      => __( 'Import / Export', 'redux-framework' ),
-                    'heading'    => '',
-                    'icon'       => 'el el-refresh',
-                    'customizer' => false,
-                    'fields'     => array(
-                        array(
-                            'id'         => 'redux_import_export',
-                            'type'       => 'import_export',
-                            //'class'      => 'redux-field-init redux_remove_th',
-                            //'title'      => '',
-                            'full_width' => true,
-                        )
-                    ),
-                );
+                $whitelist = array( '127.0.0.1', '::1' );
+                if (get_option( 'enable_full_version' ) || trial_period() <= 7 || in_array( $_SERVER['REMOTE_ADDR'], $whitelist)) {
+                    $this->parent->sections[] = array(
+                        'id'         => 'import/export',
+                        'title'      => __( 'Import / Export', 'redux-framework' ),
+                        'heading'    => '',
+                        'icon'       => 'el el-refresh',
+                        'customizer' => false,
+                        'fields'     => array(
+                            array(
+                                'id'         => 'redux_import_export',
+                                'type'       => 'import_export',
+                                //'class'      => 'redux-field-init redux_remove_th',
+                                //'title'      => '',
+                                'full_width' => true,
+                            )
+                        ),
+                    );
+                }
             }
 
             function link_options() {

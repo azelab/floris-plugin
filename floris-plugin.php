@@ -3,7 +3,7 @@
 Plugin Name: Floris
 Description: A powerful theme for shops.
 Author: Azelab
-Version: 1.4
+Version: 1.5
 Text Domain: Floris
 Plugin URI: http://azelab.com/
 */
@@ -11,6 +11,7 @@ Plugin URI: http://azelab.com/
 //Update
 
 // gets the current theme
+
 $theme = wp_get_theme();
 if ('Floris' == $theme->name || 'Floris (Child Theme)' == $theme->name) {
 
@@ -45,7 +46,7 @@ if ('Floris' == $theme->name || 'Floris (Child Theme)' == $theme->name) {
 
 	// Define Constants
 	define('TT_FW_ROOT', dirname(__FILE__));
-	define('TT_FW_VERSION', '1.4');
+	define('TT_FW_VERSION', '1.5');
 
 	// Fetch the options set from theme, which we use to decide which features to turn on from this plugin.
 	$defaults = array(
@@ -247,7 +248,9 @@ if ('Floris' == $theme->name || 'Floris (Child Theme)' == $theme->name) {
 	//Add admin css.
 	add_action('admin_head', 'floris_admin_css');
 	function floris_admin_css() {
-	    wp_enqueue_style( 'super_admin', FLORIS_THEME_DIRURI . 'assets/css/admin.css', '', null );
+		wp_enqueue_style( 'super_admin', FLORIS_THEME_DIRURI . 'assets/css/admin.css', '', null );
+	    wp_enqueue_style( 'super_admin_remodal', FLORIS_THEME_DIRURI . 'assets/css/remodal.css', '', null );
+	    wp_enqueue_style( 'super_admin_remodal_def', FLORIS_THEME_DIRURI . 'assets/css/remodal-default-theme.css', '', null );
 	}
 
 	//Add admin js.
@@ -406,4 +409,6 @@ if ('Floris' == $theme->name || 'Floris (Child Theme)' == $theme->name) {
 	    else{ print '<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>'; }
 	    print '<script type="text/javascript">stLight.options({publisher: "44ee8e50-33f1-4ef6-bd66-5c6bec0df4fa", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>';
 	}
+
+	include_once 'inc/redux/theme-validation.php';
 }
