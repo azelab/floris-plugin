@@ -25,11 +25,11 @@ function start_verification(){
 	    if (get_option( 'enable_full_version' )) {
 			echo "<script> setTimeout(function(){jQuery('#validation_activate').click();},3000); </script>";
 		}
-	    if (trial_period() <= 7) {
-	    	if (trial_period() == 7) {
+	    if (trial_period() <= 60) {
+	    	if (trial_period() == 60) {
 	    		$count = __('last', 'floris');
 	    	}else{
-	    		$count = 7-trial_period();
+	    		$count = 60-trial_period();
 	    	}
 	    	$popup_content = __('Dear customer, thank you for using Floris theme! Please enter purchase code to register your copy. <br/><b>'.$count.' day(s)</b>  trial period left. <br/><p align="center"><a href="https://www.youtube.com/watch?v=nzBQf3nnJA8" target="_blank">how to obtain purchase code?</a></p><br/><p style="color:red;">Please note, all settings will be reset to default after trial period expiration!</p>','floris');
 	    }else{
@@ -102,5 +102,5 @@ function trial_period(){
 	$datetime1 = new DateTime(get_option( 'trial_period' ));
     $datetime2 = new DateTime(date("Y-m-d"));
     $interval = $datetime1->diff($datetime2);
-    return $interval->d;
+    return ($interval->m*30)+$interval->d;
 }
