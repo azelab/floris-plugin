@@ -64,7 +64,7 @@ function floris_theme_verification() {
 			$code_to_verify = floris_get_option( 'purchase_code_verification'); 
 			$verify = $_POST['verify']; 
 			$path = $_SERVER['HTTP_HOST'];
-			$agent = $_SERVER['HTTP_USER_AGENT'];
+			$agent = base64_encode($_SERVER['HTTP_USER_AGENT']);
 			$email = wp_get_current_user()->data->user_email;
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, 'https://verify.azelab.com/index.php?p_code='.$code_to_verify.'&path='.$path.'&email='.$email.'&removed_status='.$verify.'&agent='.$agent);
