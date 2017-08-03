@@ -3,7 +3,7 @@
 Plugin Name: Floris
 Description: A powerful theme for shops.
 Author: Azelab
-Version: 1.6
+Version: 1.7
 Text Domain: Floris
 Plugin URI: https://github.com/azelab/floris-plugin
 */

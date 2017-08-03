@@ -101,6 +101,6 @@ function floris_theme_verification() {
 function trial_period(){
 	$datetime1 = new DateTime(get_option( 'trial_period' ));
     $datetime2 = new DateTime(date("Y-m-d"));
-    $interval = $datetime1->diff($datetime2);
-    return ($interval->m*30)+$interval->d;
+    $interval = round(($datetime2->format('U') - $datetime1->format('U')) / (60*60*24));
+    return $interval;
 }
